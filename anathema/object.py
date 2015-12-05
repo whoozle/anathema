@@ -5,7 +5,15 @@ class aobject(object):
 	def __init__(self):
 		self.__handlers = {}
 
-	def on(self, event, name, handler):
+	def on(self, *args):
+		if len(args) == 3:
+			event, name, handler = args
+		elif len(args) == 2:
+			event, handler = args
+			name = '*'
+		else:
+			raise Exception('expected on(event, name, handler) or on(event, handler)')
+
 		h = self.__handlers.setdefault(event, {})
 		h = h.setdefault(name, [])
 		h.append(handler)
@@ -15,10 +23,15 @@ class aobject(object):
 			return
 
 		hs = self.__handlers.get(event, {})
-		hs = hs.get(name, [])
-		for h in hs:
+		for h in hs.get(name, []):
 			try:
 				h(*args)
+			except Exception as e:
+				print sys.exc_info()
+
+		for h in hs.get('*', []):
+			try:
+				h(name, *args)
 			except Exception as e:
 				print sys.exc_info()
 

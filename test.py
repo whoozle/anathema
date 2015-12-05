@@ -9,8 +9,12 @@ class Foo(aobject):
 foo = Foo()
 
 def onX(value, old):
-	print "x changed to ", value, " from ", old
+	print "X: changed to ", value, " from ", old
 
+def onAny(name, value, old):
+	print "ANY: changed ", name, " to ", value, " from ", old
+
+foo.on('changed', onAny)
 foo.on('changed', 'x', onX)
 
 foo.x = 1
