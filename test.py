@@ -2,8 +2,8 @@
 
 from anathema import Renderer
 
-def main(self):
-	print "hello"
+def main(renderer):
+	print "hello", renderer
 	while True:
 		pass
 
