@@ -1,3 +1,5 @@
 import curses
+
 class Backend(object):
-	pass
+	def __init__(self, main):
+		curses.wrapper(main)

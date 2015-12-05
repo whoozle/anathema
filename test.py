@@ -2,5 +2,9 @@
 
 from anathema import Renderer
 
-r = Renderer()
+def main(self):
+	print "hello"
+	while True:
+		pass
 
+r = Renderer(main)
