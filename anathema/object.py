@@ -17,6 +17,7 @@ class aobject(object):
 		h = self.__handlers.setdefault(event, {})
 		h = h.setdefault(name, [])
 		h.append(handler)
+		#rewrite everything with weakref
 
 	def emit(self, event, name, *args):
 		if name.startswith('_'):
