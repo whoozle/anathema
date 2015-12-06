@@ -16,6 +16,11 @@ class Backend(object):
 		curses.wrapper(self.__wrapper)
 
 	def __wrapper(self, window):
+		print curses.COLORS
+		for bg in xrange(0, 16):
+			for fg in xrange(0, 16):
+				idx = 1 + ((bg << 4) | fg)
+				curses.init_pair(idx, fg, bg)
 		self.window = window
 		size = window.getmaxyx()
 		self.width, self.height = size
@@ -28,6 +33,7 @@ class Backend(object):
 
 	def clear(self, color, rect):
 		self.window.bkgdset(color)
+		self.window.bkgd(color)
 		if rect is None:
 			self.window.clear()
 		else:
