@@ -1,9 +1,11 @@
 #!/usr/bin/env python
 
-from anathema import Renderer
+from anathema import Renderer, Rect, Color
 
 def main(renderer):
-	print "hello", renderer
+	size = renderer.size
+	renderer.clear(Color.red)
+	renderer.flip()
 	while True:
 		pass
 

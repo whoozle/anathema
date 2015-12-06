@@ -3,6 +3,10 @@ class Rect(object):
 
 	def __init__(self, *args):
 		nargs = len(args)
+		if nargs == 1:
+			args = args[0]
+			nargs = len(args)
+
 		if nargs == 4:
 			self.left, self.top, self.right, self.bottom = args
 		elif nargs == 2:
