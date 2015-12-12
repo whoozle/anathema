@@ -1,13 +1,7 @@
 import anathema
 from anathema.backend import Backend
 from anathema.rect import Rect
-
-class Surface(object):
-	def __init__(self):
-		self.__rows = []
-
-	def resize(self, size):
-		w, h = size
+from anathema.surface import Surface
 
 class Renderer(object):
 	def __init__(self, main):
@@ -17,6 +11,7 @@ class Renderer(object):
 
 	def __wrapper(self, backend):
 		self.backend = backend
+		self.backbuffer = Surface(backend.size)
 		main = self.__main
 		main(self)
 
@@ -24,8 +19,14 @@ class Renderer(object):
 	def size(self):
 		return self.backend.size
 
-	def clear(self, color, rect = None):
-		self.backend.clear(color, rect)
+	def text(self, pos, text, color):
+		pass
+		#if color is not None:
+		#	window.set
 
-	def flip(self, rect = None):
-		self.backend.flip(rect)
+	def clear(self, color, rect = None):
+		pass
+
+	def flip(self):
+		self.backbuffer.update(self.backend)
+		self.backend.flip(0)

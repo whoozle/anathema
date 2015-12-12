@@ -19,11 +19,12 @@ class Backend(object):
 		print curses.COLORS
 		for bg in xrange(0, 16):
 			for fg in xrange(0, 16):
-				idx = 1 + ((bg << 4) | fg)
-				curses.init_pair(idx, fg, bg)
+				idx = ((bg << 4) | fg)
+				if bg or fg:
+					curses.init_pair(idx, fg, bg)
 		self.window = window
 		size = window.getmaxyx()
-		self.width, self.height = size
+		self.height, self.width = size
 		main = self.__main
 		main(self)
 
@@ -41,3 +42,18 @@ class Backend(object):
 
 	def flip(self, rect):
 		self.window.refresh()
+
+	def move(self, y, x):
+		self.window.move(y, x)
+
+	def putc(self, ch, attr = 0):
+		try:
+			self.window.addch(ch, attr)
+		except:
+			pass
+
+	def puts(self, str, attr = 0):
+		try:
+			self.window.addstr(str, attr)
+		except:
+			pass
