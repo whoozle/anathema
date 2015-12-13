@@ -28,5 +28,5 @@ class Renderer(object):
 		pass
 
 	def flip(self):
-		self.backbuffer.update(self.backend)
+		self.backbuffer.paint(self.backend)
 		self.backend.flip(0)

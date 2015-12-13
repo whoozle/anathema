@@ -11,6 +11,7 @@ def main(renderer):
 	renderer.backend.window.bkgdset(0, 0x47 << 8)
 	renderer.backend.window.addstr(10, 10, 'HAET')
 	renderer.flip()
+	renderer.backbuffer[1][1].char = '.'
 	while True:
 		pass
 
