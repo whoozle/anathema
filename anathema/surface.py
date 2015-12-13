@@ -1,11 +1,10 @@
 class Cell(object):
-	__slots__ = ['__attr', '__char', '__row', '__x']
+	__slots__ = ['__attr', '__char', 'modified']
 
-	def __init__(self, row, x):
+	def __init__(self):
 		self.__attr = 0
 		self.__char = '.'
-		self.__row = row
-		self.__x = x
+		self.modified = True
 
 	@property
 	def char(self):
@@ -13,8 +12,8 @@ class Cell(object):
 
 	@char.setter
 	def char(self, value):
+		self.modified = True
 		self.__char = value
-		self.__update()
 
 	@property
 	def attr(self):
@@ -22,30 +21,25 @@ class Cell(object):
 
 	@attr.setter
 	def attr(self, value):
+		self.modified = True
 		self.__attr = value
-		self.__update()
 
-	def __update(self):
-		self.__row.update(self.__x)
 
 class Row(object):
 	def __init__(self, width):
-		self.__cols = [Cell(self, i) for i in xrange(0, width)]
-		self.__invalid = [(0, width)]
+		self.__cols = [Cell() for i in xrange(0, width)]
 
 	def __getitem__(self, idx):
 		return self.__cols[idx]
 
-	def update(self, x):
-		pass
-
 	def paint(self, backend, y):
-		cols = self.__cols
-		for x1, x2 in self.__invalid:
-			backend.move(y, x1)
-			for x in xrange(x1, x2):
-				backend.puts(cols[x].char, cols[x].attr)
-		self.__invalid = []
+		x = 0
+		for col in self.__cols:
+			if col.modified:
+				col.modified = False
+				backend.move(y, x)
+				backend.puts(col.char, col.attr)
+			x += 1
 
 class Surface(object):
 	def __init__(self, size):
