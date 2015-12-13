@@ -1,3 +1,6 @@
+import locale
+locale.setlocale(locale.LC_ALL, '')
+
 import curses
 from anathema.rect import Rect
 
