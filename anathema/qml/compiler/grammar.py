@@ -17,7 +17,7 @@ from grako.parsing import graken, Parser
 from grako.util import re, RE_FLAGS
 
 
-__version__ = (2015, 12, 14, 19, 49, 21, 0)
+__version__ = (2015, 12, 19, 21, 34, 46, 5)
 
 __all__ = [
     'qmlParser',
@@ -28,7 +28,7 @@ __all__ = [
 
 class qmlParser(Parser):
     def __init__(self,
-                 whitespace=re.compile('[\\t\\r\\f\\n]+', RE_FLAGS | re.DOTALL),
+                 whitespace=None,
                  nameguard=None,
                  comments_re='\\(\\*.*?\\*\\)',
                  eol_comments_re='#.*?$',

@@ -1,8 +1,6 @@
 @@comments :: /\(\*.*?\*\)/
 @@eol_comments :: /#.*?$/
 
-@@whitespace :: /[\t\r\f\n]+/
-
 component_type = /[A-Z][a-z0-9]*/ ;
 property_type = /[a-zA-Z0-9_]+/ ;
 identifier = /[a-z0-9_]*/ ;
