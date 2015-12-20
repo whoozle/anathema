@@ -2,7 +2,7 @@
 # coding=utf8
 
 from anathema import Renderer, Rect, Color
-from anathema.qml import compile
+import anathema.qml
 
 #def main(renderer):
 #	size = renderer.size
@@ -22,4 +22,4 @@ from anathema.qml import compile
 #
 #Renderer(main)
 
-compile('core.Item')
+import qml.core.Item

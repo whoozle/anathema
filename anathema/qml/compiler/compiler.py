@@ -15,3 +15,4 @@ class Compiler(object):
 		ir = IRFactory()
 		ast = parser.parse(data, 'component_declaration', filename = filename, trace = trace, semantics = ir)
 		print ast
+		return ""
