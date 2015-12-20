@@ -1,7 +1,7 @@
 import sys
 import logging
 
-class aobject(object):
+class Object(object):
 	def __init__(self):
 		self.__handlers = {}
 
