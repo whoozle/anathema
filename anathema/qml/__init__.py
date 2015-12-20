@@ -5,7 +5,7 @@ import os.path
 import sys
 import imp
 
-_runtime = os.path.join(os.path.dirname(__file__), 'runtime')
+_runtime = os.path.join(os.path.dirname(__file__), 'qml')
 
 def compile(fname):
 	with open(fname) as f:
