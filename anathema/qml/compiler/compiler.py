@@ -2,8 +2,12 @@ import grammar
 import lang
 
 class IRFactory(grammar.qmlSemantics):
+
 	def property_declaration(self, ast):
 		return lang.PropertyDeclaration(ast[1], ast[2])
+
+	def component_declaration(self, ast):
+		return lang.ComponentDeclaration(ast[0], ast[1][1])
 
 
 class Compiler(object):
