@@ -1,9 +1,9 @@
 import grammar
+import lang
 
 class IRFactory(grammar.qmlSemantics):
 	def property_declaration(self, ast):
-		print "property declaration", ast
-		return ast
+		return lang.PropertyDeclaration(ast[1], ast[2])
 
 
 class Compiler(object):
