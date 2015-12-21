@@ -17,7 +17,7 @@ from grako.parsing import graken, Parser
 from grako.util import re, RE_FLAGS
 
 
-__version__ = (2015, 12, 19, 21, 34, 46, 5)
+__version__ = (2015, 12, 21, 18, 57, 29, 0)
 
 __all__ = [
     'qmlParser',
@@ -55,7 +55,7 @@ class qmlParser(Parser):
 
     @graken()
     def _identifier_(self):
-        self._pattern(r'[a-z0-9_]*')
+        self._pattern(r'[a-z][a-z0-9_]*')
 
     @graken()
     def _number_(self):
