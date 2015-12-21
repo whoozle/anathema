@@ -17,7 +17,7 @@ from grako.parsing import graken, Parser
 from grako.util import re, RE_FLAGS
 
 
-__version__ = (2015, 12, 21, 18, 57, 29, 0)
+__version__ = (2015, 12, 21, 19, 0, 59, 0)
 
 __all__ = [
     'qmlParser',
@@ -66,6 +66,9 @@ class qmlParser(Parser):
         self._token('property')
         self._property_type_()
         self._identifier_()
+        with self._optional():
+            self._token(':')
+            self._expr_()
 
     @graken()
     def _declaration_end_(self):

@@ -6,7 +6,7 @@ property_type = /[a-zA-Z0-9_]+/ ;
 identifier = /[a-z][a-z0-9_]*/ ;
 number = /[0-9]+(\.[0-9]+)?/;
 
-property_declaration = 'property' property_type identifier ;
+property_declaration = 'property' property_type identifier [':' expr];
 declaration_end = ';' ;
 
 property_assignment = identifier ':' expr ;

@@ -22,4 +22,4 @@ import anathema.qml
 #
 #Renderer(main)
 
-import qml.core.Item
+import qml.core.Rectangle

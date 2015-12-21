@@ -1,4 +1,4 @@
 Item {
 	property Color color
-	property Border border
+	property Border border : Border { }
 }
